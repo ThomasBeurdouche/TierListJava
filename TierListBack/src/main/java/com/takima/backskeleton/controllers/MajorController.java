@@ -1,4 +1,4 @@
-package main.java.com.takima.backskeleton.controllers;
+package com.takima.backskeleton.controllers;
 
 import com.takima.backskeleton.models.Major;
 import com.takima.backskeleton.models.Student;

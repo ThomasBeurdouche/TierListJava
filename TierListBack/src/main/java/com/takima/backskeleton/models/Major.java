@@ -1,4 +1,4 @@
-package main.java.com.takima.backskeleton.models;
+package com.takima.backskeleton.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;

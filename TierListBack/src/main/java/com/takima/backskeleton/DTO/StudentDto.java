@@ -1,4 +1,4 @@
-package main.java.com.takima.backskeleton.DTO;
+package com.takima.backskeleton.DTO;
 
 import com.takima.backskeleton.models.Course;
 import com.takima.backskeleton.models.Major;

@@ -1,4 +1,4 @@
-package main.java.com.takima.backskeleton.models;
+package com.takima.backskeleton.models;
 
 import jakarta.persistence.*;
 import lombok.Getter;

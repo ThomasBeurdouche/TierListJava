@@ -1,4 +1,4 @@
-package main.java.com.takima.backskeleton.DAO;
+package com.takima.backskeleton.DAO;
 
 import com.takima.backskeleton.models.Student;
 import org.springframework.data.jpa.repository.JpaRepository;

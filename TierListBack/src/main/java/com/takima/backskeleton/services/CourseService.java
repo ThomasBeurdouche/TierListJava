@@ -1,4 +1,4 @@
-package main.java.com.takima.backskeleton.services;
+package com.takima.backskeleton.services;
 
 import com.takima.backskeleton.DAO.CourseDao;
 import com.takima.backskeleton.models.Course;

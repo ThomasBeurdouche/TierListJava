@@ -1,4 +1,4 @@
-package main.java.com.takima.backskeleton;
+package com.takima.backskeleton;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

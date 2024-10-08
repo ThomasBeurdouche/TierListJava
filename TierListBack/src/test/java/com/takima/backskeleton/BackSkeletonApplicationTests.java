@@ -1,4 +1,4 @@
-package test.java.com.takima.backskeleton;
+package com.takima.backskeleton;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
