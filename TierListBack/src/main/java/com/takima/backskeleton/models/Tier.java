@@ -15,6 +15,7 @@ public class Tier {
     private Long id;
     @Column(name = "tierTitle")
     private String tierTitle;
+    //Todo : private String description
     @OneToMany
     @JoinTable(
             name = "tier_item",
