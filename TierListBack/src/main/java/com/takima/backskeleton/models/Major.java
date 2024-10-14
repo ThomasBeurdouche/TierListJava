@@ -2,15 +2,13 @@ package com.takima.backskeleton.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+
 
 import java.util.List;
 
 @Entity
 @Table(name = "majors")
-@Getter
-@NoArgsConstructor
+
 public class Major {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,5 +19,16 @@ public class Major {
     @JsonIgnore
     private List<Student> students;
 
+    public Major() {
+    }
+    public Long getId() {
+        return id;
+    }
+    public String getName() {
+        return name;
+    }
+    public String getDescription() {
+        return description;
+    }
 }
 

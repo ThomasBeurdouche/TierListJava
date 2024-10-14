@@ -2,15 +2,12 @@ package com.takima.backskeleton.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+
 
 import java.util.List;
 
 @Entity
 @Table(name = "courses")
-@NoArgsConstructor
-@Getter
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,4 +17,17 @@ public class Course {
     @ManyToMany(mappedBy = "courses")
     @JsonIgnore
     List<Student> students;
+
+    public Course() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+    public String getName() {
+        return name;
+    }
+    public Integer getHours() {
+        return hours;
+    }
 }

@@ -3,7 +3,6 @@ package com.takima.backskeleton.controllers;
 import com.takima.backskeleton.models.Major;
 import com.takima.backskeleton.models.Student;
 import com.takima.backskeleton.services.MajorService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,9 +10,13 @@ import java.util.List;
 @CrossOrigin
 @RequestMapping("majors")
 @RestController
-@RequiredArgsConstructor
+
 public class MajorController {
     private final MajorService majorService;
+
+    public MajorController(MajorService majorService) {
+        this.majorService = majorService;
+    }
 
     @GetMapping("")
     public List<Major> findAll() {
