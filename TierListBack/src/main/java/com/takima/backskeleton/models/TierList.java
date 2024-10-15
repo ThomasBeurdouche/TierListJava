@@ -7,7 +7,7 @@ import java.time.Instant;
 import java.util.List;
 
 @Entity
-@Table(name = "TierList")
+@Table(name = "TierLists")
 @Getter
 public class TierList {
     @Id
