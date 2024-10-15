@@ -15,6 +15,13 @@ public class TierList {
     private Long id;
     @Column(name = "tierListTitle")
     private String tierListTitle;
+    @Column(name = "publicTierList")
+    private boolean publicTierList;
+    @Column(name = "Vote pour")
+    private Integer votePour;
+    @Column(name = "Vote contre")
+    private Integer voteContre;
+    @Column(name = "Date")
     private Instant creationDate;
     @OneToMany
     @JoinTable(
@@ -23,15 +30,17 @@ public class TierList {
             inverseJoinColumns = @JoinColumn(name = "tier_id"))
     private List<Tier> tiers;
     @ManyToOne
-    @Column(name = "owner")
     private User owner;
 
     private TierList(com.takima.backskeleton.models.TierList.Builder builder) {
         this.id = builder.id;
         this.tierListTitle = builder.tierListTitle;
+        this.publicTierList = builder.publicTierList;
+        this.votePour = builder.votePour;
+        this.voteContre = builder.voteContre;
         this.creationDate = builder.creationDate;
-        this.owner = builder.owner;
         this.tiers = builder.tiers;
+        this.owner = builder.owner;
     }
     public TierList() {
     }
@@ -39,9 +48,13 @@ public class TierList {
     public static class Builder {
         private Long id;
         private String tierListTitle;
-        private User owner;
+        private boolean publicTierList;
+        private Integer votePour;
+        private Integer voteContre;
         private Instant creationDate;
         private List<Tier> tiers;
+        private User owner;
+
 
         public com.takima.backskeleton.models.TierList.Builder id (Long id) {
             this.id = id;
@@ -50,6 +63,21 @@ public class TierList {
 
         public com.takima.backskeleton.models.TierList.Builder tierListTitle(String tierListTitle) {
             this.tierListTitle = tierListTitle;
+            return this;
+        }
+
+        public com.takima.backskeleton.models.TierList.Builder publicTierList(boolean publicTierList) {
+            this.publicTierList = publicTierList;
+            return this;
+        }
+
+        public com.takima.backskeleton.models.TierList.Builder votePour(Integer votePour) {
+            this.votePour = votePour;
+            return this;
+        }
+
+        public com.takima.backskeleton.models.TierList.Builder voteContre(Integer voteContre) {
+            this.voteContre = voteContre;
             return this;
         }
 
