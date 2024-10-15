@@ -28,3 +28,10 @@ create table student_course
     student_id int not null,
     course_id int not null
 );
+create table items
+(
+    id SERIAL PRIMARY KEY,
+    tier_id int not null,
+    url TEXT not null,
+    image bytea null
+);

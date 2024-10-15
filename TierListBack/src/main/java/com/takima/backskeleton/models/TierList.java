@@ -1,14 +1,13 @@
 package com.takima.backskeleton.models;
 
 import jakarta.persistence.*;
-import lombok.Getter;
+
 
 import java.time.Instant;
 import java.util.List;
 
 @Entity
 @Table(name = "TierList")
-@Getter
 public class TierList {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

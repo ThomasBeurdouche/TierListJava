@@ -1,31 +1,41 @@
 package com.takima.backskeleton.models;
 
 import jakarta.persistence.*;
-import lombok.Getter;
 
 import java.util.List;
 
 @Entity
 @Table(name = "Item")
-@Getter
+
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "itemTitle")
-    private String itemTitle;
-    //ToDo : private String lien_Image;
+    private String url;
+    @ManyToOne (cascade = CascadeType.MERGE)
+    @JoinColumn(name = "tier_id")
+    private Tier tier;
+
+    public Tier getTier() {
+        return tier;
+    }
+
+    public void setTier(Tier tier) {
+        this.tier = tier;
+    }
+
+
 
     private Item(com.takima.backskeleton.models.Item.Builder builder) {
         this.id = builder.id;
-        this.itemTitle = builder.itemTitle;
+        this.url = builder.url;
     }
     public Item() {
     }
 
     public static class Builder {
         private Long id;
-        private String itemTitle;
+        private String url;
 
         public com.takima.backskeleton.models.Item.Builder id (Long id) {
             this.id = id;
@@ -33,7 +43,7 @@ public class Item {
         }
 
         public com.takima.backskeleton.models.Item.Builder itemTitle(String itemTitle) {
-            this.itemTitle = itemTitle;
+            this.url = url;
             return this;
         }
 

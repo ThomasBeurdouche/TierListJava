@@ -1,14 +1,13 @@
 package com.takima.backskeleton.models;
 
 import jakarta.persistence.*;
-import lombok.Getter;
+
 
 import java.time.Instant;
 import java.util.List;
 
 @Entity
 @Table(name = "Tier")
-@Getter
 public class Tier {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +21,9 @@ public class Tier {
             joinColumns = @JoinColumn(name = "tier_id"),
             inverseJoinColumns = @JoinColumn(name = "item_id"))
     private List<Item> items;
+    @ManyToOne (cascade = CascadeType.MERGE)
+    @JoinColumn(name = "list_id")
+    private TierList tierList;
 
     private Tier(com.takima.backskeleton.models.Tier.Builder builder) {
         this.id = builder.id;
