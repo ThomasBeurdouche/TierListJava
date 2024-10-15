@@ -7,7 +7,7 @@ import java.time.Instant;
 import java.util.List;
 
 @Entity
-@Table(name = "TierList")
+@Table(name = "TierLists")
 public class TierList {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,6 +42,35 @@ public class TierList {
         this.owner = builder.owner;
     }
     public TierList() {
+    }
+
+    public Integer getVotePour() {
+        return votePour;
+    }
+    public Integer getVoteContre() {
+        return voteContre;
+    }
+    public Instant getCreationDate() {
+        return creationDate;
+    }
+    public List<Tier> getTiers() {
+        return tiers;
+    }
+    public User getOwner() {
+        return owner;
+    }
+    public Long getId() {
+        return id;
+    }
+    public String getTierListTitle() {
+        return tierListTitle;
+    }
+    public boolean isPublicTierList() {
+        return publicTierList;
+    }
+
+    public void setId(Long tierListId) {
+        this.id = tierListId;
     }
 
     public static class Builder {
@@ -98,6 +127,10 @@ public class TierList {
         public com.takima.backskeleton.models.TierList build() {
             return new com.takima.backskeleton.models.TierList(this);
         }
+
+
+
     }
+
 }
 

@@ -14,6 +14,6 @@ import java.util.List;
 @Repository
 public interface TierListDao extends JpaRepository<TierList, Long> {
     @Query("SELECT t FROM Tier t WHERE t.tierList.id= :tierListId")
-    List<Item> findByMajorIdAndCourseId(int tierId);
+    List<Item> findbyTierListId(int tierListId);
 }
 

@@ -1,24 +1,25 @@
 package com.takima.backskeleton.controllers;
 
 import com.takima.backskeleton.DTO.StudentDto;
+import com.takima.backskeleton.DTO.TierListDto;
 import com.takima.backskeleton.models.Student;
 import com.takima.backskeleton.models.TierList;
 import com.takima.backskeleton.services.StudentService;
-import com.takima.backskeleton.services.TierListServices;
+import com.takima.backskeleton.services.TierListService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 @CrossOrigin
-@RequestMapping("students")
+@RequestMapping("TierLists")
 @RestController
 public class TierListController {
 
- private final TierListServices TierListService;
+ private final TierListService TierListService;
 
 
-    public TierListController(TierListServices tierListService) {
+    public TierListController(TierListService tierListService) {
         TierListService = tierListService;
     }
 
@@ -27,11 +28,8 @@ public class TierListController {
         return TierListService.findAll();
     }
 
-
-=
-
     @GetMapping("/{id}")
-    public Student getTierListById(@PathVariable Long id) {
+    public TierList getTierListById(@PathVariable Long id) {
         return TierListService.getTierListById(id);
     }
 
@@ -46,7 +44,7 @@ public class TierListController {
     }
 
     @PostMapping("/{id}")
-    public void updateTierList(@RequestBody StudentDto TierListDto, @PathVariable Long id) {
-        TierListService.updateTierList(TierListDto, id);
+    public void updateTierList(@RequestBody TierListDto tierListDto, @PathVariable Long id) {
+        TierListService.updateTierList(tierListDto, id);
     }
 }

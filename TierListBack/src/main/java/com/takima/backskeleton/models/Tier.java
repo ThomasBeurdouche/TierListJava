@@ -33,6 +33,24 @@ public class Tier {
     public Tier() {
     }
 
+    public Tier(Long id, String name,TierList tierList) {
+        this.id = id;
+        this.tierTitle = name;
+        this.tierList = new TierList();
+        this.tierList.setId(tierList.getId());
+    }
+
+    public String getTierTitle() {
+        return tierTitle;
+    }
+
+    public TierList getTierList() {
+        return tierList;
+    }
+    public Long getId() {
+        return id;
+    }
+
     public static class Builder {
         private Long id;
         private String tierTitle;
@@ -57,5 +75,7 @@ public class Tier {
             return new com.takima.backskeleton.models.Tier(this);
         }
     }
+
+
 }
 

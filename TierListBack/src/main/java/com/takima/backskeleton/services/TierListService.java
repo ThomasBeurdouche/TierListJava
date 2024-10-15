@@ -1,14 +1,12 @@
 package com.takima.backskeleton.services;
 
-import com.takima.backskeleton.DAO.StudentDao;
 import com.takima.backskeleton.DAO.TierDao;
 import com.takima.backskeleton.DAO.TierListDao;
 import com.takima.backskeleton.DTO.StudentDto;
-import com.takima.backskeleton.DTO.StudentMapper;
+import com.takima.backskeleton.DTO.TierListDto;
+import com.takima.backskeleton.DTO.TierListMapper;
 import com.takima.backskeleton.models.Student;
 import com.takima.backskeleton.models.TierList;
-import com.takima.backskeleton.models.Tier;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,17 +16,15 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
-public class TierListServices {
-
+public class TierListService {
 
     private final TierListDao tierListDao;
     private final TierDao tierDao;
 
-    public TierListServices(TierListDao tierListDao, TierDao tierDao) {
+    public TierListService(TierListDao tierListDao, TierDao tierDao) {
         this.tierListDao = tierListDao;
         this.tierDao = tierDao;
     }
-
     public List<TierList> findAll() {
         Iterable<TierList> it = tierListDao.findAll();
         List <TierList> users = new ArrayList<>();
@@ -46,10 +42,10 @@ public class TierListServices {
     }
 
     @Transactional
-    public void addStudent(StudentDto studentDto) {
+    public void addTierList(TierListDto tierListDto) {
         TierList tierList;
         try {
-            tierList = StudentMapper.fromDto(studentDto, null); //TODO : change to TierListMapper
+            tierList = TierListMapper.fromDto(tierListDto, null); //TODO : change to TierListMapper
         } catch (IOException e) {
             throw new RuntimeException("Error with tierlist image", e);
         }
@@ -61,18 +57,22 @@ public class TierListServices {
     public void updateTierList(TierListDto tierListDto, Long id) {
         tierListDao.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Student doesn't exist"));
-        Student student;
+        TierList tierList;
         try {
-            student = StudentMapper.fromDto(tierListDto, id); //TODO : change to TierListMapper
+            tierList = TierListMapper.fromDto(tierListDto, null); //TODO : change to TierListMapper
         } catch (IOException e) {
             throw new RuntimeException("Error with Student image", e);
         }
-        tierListDao.save(student);
+        tierListDao.save(tierList);
     }
 
 
     public void addTierList(StudentDto studentDto) {
         // TODO  : addTierList
+    }
+
+    public TierList getTierListById(Long id) {
+        return null;//TODO : getTierListById
     }
 }
 
