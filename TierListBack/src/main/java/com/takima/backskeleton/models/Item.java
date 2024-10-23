@@ -1,19 +1,23 @@
 package com.takima.backskeleton.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
-@Table(name = "Item")
+@Table(name = "items")
 
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "itemURL")
     private String url;
-    @ManyToOne (cascade = CascadeType.MERGE)
+
+    @ManyToOne
     @JoinColumn(name = "tier_id")
+    @JsonBackReference  // Utilisé pour la partie "enfant"
     private Tier tier;
 
     public Tier getTier() {

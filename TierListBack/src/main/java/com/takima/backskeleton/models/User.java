@@ -1,9 +1,12 @@
 package com.takima.backskeleton.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
-@Table(name = "User")
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,6 +17,10 @@ public class User {
     private String mail;
     @Column(name = "mdp")
     private String mdp;
+
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+    @JsonManagedReference  // Utilisé pour la partie "parent"
+    private List<TierList> tierLists;
 
     private User(com.takima.backskeleton.models.User.Builder builder) {
         this.id = builder.id;

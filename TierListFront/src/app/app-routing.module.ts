@@ -9,7 +9,6 @@ import { MajorsComponent } from "majors/majors.component"
 import { MajorsResolver } from "majors/majors.resolver"
 import { MajorStudentsResolver } from "majors/major-students/major-students.resolver"
 import { MajorStudentsComponent } from "majors/major-students/major-students.component"
-
 import { TierListsResolver } from "tierLists/tierLists.resolver"
 import { TierListsComponent } from "tierLists/tierLists.component"
 
@@ -48,7 +47,7 @@ const routes: Routes = [
     path: "tierLists",
     component: TierListsComponent,
     resolve: {
-      tierList: TierListsResolver,
+      tierLists: TierListsResolver,
     },
   },
 ]

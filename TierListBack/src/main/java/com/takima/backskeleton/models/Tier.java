@@ -1,5 +1,7 @@
 package com.takima.backskeleton.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 
@@ -7,22 +9,22 @@ import java.time.Instant;
 import java.util.List;
 
 @Entity
-@Table(name = "Tier")
+@Table(name = "tiers")
 public class Tier {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "tierTitle")
+    @Column(name = "tiertitle")
     private String tierTitle;
     //Todo : private String description
-    @OneToMany
-    @JoinTable(
-            name = "tier_item",
-            joinColumns = @JoinColumn(name = "tier_id"),
-            inverseJoinColumns = @JoinColumn(name = "item_id"))
+
+    @OneToMany(mappedBy = "tier", cascade = CascadeType.ALL)
+    @JsonManagedReference  // Utilisé pour la partie "parent"
     private List<Item> items;
-    @ManyToOne (cascade = CascadeType.MERGE)
-    @JoinColumn(name = "list_id")
+
+    @ManyToOne
+    @JoinColumn(name = "tierlist_id")
+    @JsonBackReference  // Utilisé pour la partie "enfant"
     private TierList tierList;
 
     private Tier(com.takima.backskeleton.models.Tier.Builder builder) {

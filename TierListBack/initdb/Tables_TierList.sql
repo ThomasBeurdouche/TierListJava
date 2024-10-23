@@ -1,26 +1,3 @@
-create table tierLists
-(
-    id SERIAL PRIMARY KEY,
-    tierListTitle TEXT not null,
-    publicTierList BOOLEAN null,
-    votePour int null,
-    voteContre int null,
-    creationDate date not null,
-    owner_id int not null
-);
-
-create table tiers
-(
-    id SERIAL PRIMARY KEY,
-    tierTitle TEXT not null
-);
-
-create table items
-(
-    id SERIAL PRIMARY KEY,
-    itemTitle TEXT not null
-);
-
 create table "users"
 (
     id SERIAL PRIMARY KEY,
@@ -29,16 +6,40 @@ create table "users"
     mdp TEXT not null
 );
 
-create table tierList_tier
+create table tierLists
 (
     id SERIAL PRIMARY KEY,
-    tierList_id int not null,
-    tier_id int not null
+    tierListTitle TEXT not null,
+    publicTierList BOOLEAN null,
+    votePour INT null,
+    voteContre INT null,
+    creationDate date not null,
+    owner_id INT not null,
+    CONSTRAINT fk_user
+        FOREIGN KEY (owner_id)
+        REFERENCES users(id)
+        ON DELETE CASCADE  -- Optionnel : si vous voulez que la suppression d'une TierList supprime aussi les Tiers associés
 );
 
-create table tier_item
+create table tiers
 (
     id SERIAL PRIMARY KEY,
-    tier_id int not null,
-    item_id int not null
+    tierTitle TEXT not null,
+    tierlist_id INT NOT NULL,
+    CONSTRAINT fk_tierlist
+        FOREIGN KEY (tierlist_id)
+        REFERENCES tierlists(id)
+        ON DELETE CASCADE  -- Optionnel : si vous voulez que la suppression d'une TierList supprime aussi les Tiers associés
+);
+
+create table items
+(
+    id SERIAL PRIMARY KEY,
+    itemTitle TEXT not null,
+    itemURL TEXT not null,
+    tier_id INT NOT NULL,
+    CONSTRAINT fk_tier
+        FOREIGN KEY (tier_id)
+        REFERENCES tiers(id)
+        ON DELETE CASCADE  -- Optionnel : si vous voulez que la suppression d'une TierList supprime aussi les Tiers associés
 );

@@ -12,39 +12,39 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 @CrossOrigin
-@RequestMapping("TierLists")
+@RequestMapping("TierLists")//on laisse en majuscule
 @RestController
 public class TierListController {
 
- private final TierListService TierListService;
+    private final TierListService tierListService;
 
 
     public TierListController(TierListService tierListService) {
-        TierListService = tierListService;
+        this.tierListService = tierListService;
     }
 
     @GetMapping("")
     public List<TierList> listTierList() {
-        return TierListService.findAll();
+        return tierListService.findAll();
     }
 
     @GetMapping("/{id}")
     public TierList getTierListById(@PathVariable Long id) {
-        return TierListService.getTierListById(id);
+        return tierListService.getTierListById(id);
     }
 
     @DeleteMapping("/{id}")
     public void deleteTierList(@PathVariable Long id) {
-        TierListService.deleteById(id);
+        tierListService.deleteById(id);
     }
 
     @PostMapping("")
     public void addTierList(@RequestBody StudentDto studentDto) {
-        TierListService.addTierList(studentDto);
+        tierListService.addTierList(studentDto);
     }
 
     @PostMapping("/{id}")
     public void updateTierList(@RequestBody TierListDto tierListDto, @PathVariable Long id) {
-        TierListService.updateTierList(tierListDto, id);
+        tierListService.updateTierList(tierListDto, id);
     }
 }

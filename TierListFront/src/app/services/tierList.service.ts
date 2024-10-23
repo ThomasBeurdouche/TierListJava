@@ -7,7 +7,7 @@ import { TierList } from 'models/tierList.model';
     providedIn: 'root',
 })
 export class TierListService {
-    private tierListsUrl = 'http://localhost:8080/tierLists';
+    private tierListsUrl = 'http://localhost:8080/TierLists';
 
     constructor(private http: HttpClient) {}
 
