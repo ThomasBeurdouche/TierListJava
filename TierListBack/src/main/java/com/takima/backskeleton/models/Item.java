@@ -55,5 +55,21 @@ public class Item {
             return new com.takima.backskeleton.models.Item(this);
         }
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getUrl() {
+        return url;
+    }
 }
 

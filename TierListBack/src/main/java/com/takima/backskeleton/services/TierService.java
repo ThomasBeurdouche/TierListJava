@@ -28,27 +28,27 @@ public class TierService {
         return users ;
     }
 
-    public Tier getById(Long id) {
-        return tierDao.findById(id).orElseThrow();
-    }
-
-    @Transactional
-    public void deleteById(Long id) {
-        tierDao.deleteById(id);
-    }
-
-    @Transactional
-    public void addTier(TierDto tierDto) {
-        Tier tier;
-        tier = TierMapper.fromDto(tierDto, null);
-        tierDao.save(tier);
-    }
-
-    @Transactional
-    public void updateTier(TierDto tierDto, Long id) {
-        tierDao.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("Tier doesn't exist"));
-        Tier tier = TierMapper.fromDto(tierDto, id);
-        tierDao.save(tier);
-    }
+//    public Tier getById(Long id) {
+//        return tierDao.findById(id).orElseThrow();
+//    }
+//
+//    @Transactional
+//    public void deleteById(Long id) {
+//        tierDao.deleteById(id);
+//    }
+//
+//    @Transactional
+//    public void addTier(TierDto tierDto) {
+//        Tier tier;
+//        tier = TierMapper.fromDto(tierDto, null);
+//        tierDao.save(tier);
+//    }
+//
+//    @Transactional
+//    public void updateTier(TierDto tierDto, Long id) {
+//        tierDao.findById(id)
+//                .orElseThrow(() -> new NoSuchElementException("Tier doesn't exist"));
+//        Tier tier = TierMapper.fromDto(tierDto, id);
+//        tierDao.save(tier);
+//    }
 }

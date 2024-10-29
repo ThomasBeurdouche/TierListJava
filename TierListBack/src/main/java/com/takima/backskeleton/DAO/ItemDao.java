@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ItemDao extends JpaRepository<Course, Long> {
+public interface ItemDao extends JpaRepository<Item, Long> {
 
 }
