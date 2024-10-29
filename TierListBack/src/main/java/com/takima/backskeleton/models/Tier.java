@@ -3,9 +3,6 @@ package com.takima.backskeleton.models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-
-
-import java.time.Instant;
 import java.util.List;
 
 @Entity
@@ -27,25 +24,22 @@ public class Tier {
     @JsonBackReference  // Utilisé pour la partie "enfant"
     private TierList tierList;
 
-    private Tier(com.takima.backskeleton.models.Tier.Builder builder) {
+    private Tier(Builder builder) {
         this.id = builder.id;
         this.tierTitle = builder.tierTitle;
         this.items = builder.items;
     }
     public Tier() {
     }
-
     public Tier(Long id, String name,TierList tierList) {
         this.id = id;
         this.tierTitle = name;
-        this.tierList = new TierList();
-        this.tierList.setId(tierList.getId());
+        this.tierList = tierList;
     }
 
     public String getTierTitle() {
         return tierTitle;
     }
-
     public TierList getTierList() {
         return tierList;
     }
@@ -58,23 +52,21 @@ public class Tier {
         private String tierTitle;
         private List<Item> items;
 
-        public com.takima.backskeleton.models.Tier.Builder id (Long id) {
+        public Builder id (Long id) {
             this.id = id;
             return this;
         }
-
-        public com.takima.backskeleton.models.Tier.Builder tierTitle(String tierTitle) {
+        public Builder tierTitle(String tierTitle) {
             this.tierTitle = tierTitle;
             return this;
         }
-
-        public com.takima.backskeleton.models.Tier.Builder items(List<Item> items) {
+        public Builder items(List<Item> items) {
             this.items = items;
             return this;
         }
 
-        public com.takima.backskeleton.models.Tier build() {
-            return new com.takima.backskeleton.models.Tier(this);
+        public Tier build() {
+            return new Tier(this);
         }
     }
 

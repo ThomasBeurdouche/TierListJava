@@ -29,12 +29,11 @@ public class TierList {
     @JsonManagedReference  // Utilisé pour la partie "parent"
     private List<Tier> tiers;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "owner_id")
-    @JsonBackReference  // Utilisé pour la partie "enfant"
     private User owner;
 
-    private TierList(com.takima.backskeleton.models.TierList.Builder builder) {
+    private TierList(Builder builder) {
         this.id = builder.id;
         this.tierListTitle = builder.tierListTitle;
         this.publicTierList = builder.publicTierList;
@@ -46,6 +45,17 @@ public class TierList {
     }
     public TierList() {
     }
+    public TierList(Long id, String title, Integer votePour, Integer voteContre, Instant creationDate, List<Tier> tiers, User owner, boolean isPublic) {
+        this.id = id;
+        this.tierListTitle = title;
+        this.votePour = votePour;
+        this.voteContre = voteContre;
+        this.creationDate = creationDate;
+        this.tiers = tiers;
+        this.owner = owner;
+        this.publicTierList = isPublic;
+    }
+
 
     public Integer getVotePour() {
         return votePour;
@@ -86,49 +96,41 @@ public class TierList {
         private List<Tier> tiers;
         private User owner;
 
-
-        public com.takima.backskeleton.models.TierList.Builder id (Long id) {
+        public Builder id (Long id) {
             this.id = id;
             return this;
         }
-
-        public com.takima.backskeleton.models.TierList.Builder tierListTitle(String tierListTitle) {
+        public Builder tierListTitle(String tierListTitle) {
             this.tierListTitle = tierListTitle;
             return this;
         }
-
-        public com.takima.backskeleton.models.TierList.Builder publicTierList(boolean publicTierList) {
+        public Builder publicTierList(boolean publicTierList) {
             this.publicTierList = publicTierList;
             return this;
         }
-
-        public com.takima.backskeleton.models.TierList.Builder votePour(Integer votePour) {
+        public Builder votePour(Integer votePour) {
             this.votePour = votePour;
             return this;
         }
-
-        public com.takima.backskeleton.models.TierList.Builder voteContre(Integer voteContre) {
+        public Builder voteContre(Integer voteContre) {
             this.voteContre = voteContre;
             return this;
         }
-
-        public com.takima.backskeleton.models.TierList.Builder owner(User owner) {
+        public Builder owner(User owner) {
             this.owner = owner;
             return this;
         }
-
-        public com.takima.backskeleton.models.TierList.Builder tiers(List<Tier> tiers) {
+        public Builder tiers(List<Tier> tiers) {
             this.tiers = tiers;
             return this;
         }
-
-        public com.takima.backskeleton.models.TierList.Builder creationDate(Instant creationDate) {
+        public Builder creationDate(Instant creationDate) {
             this.creationDate = creationDate;
             return this;
         }
 
-        public com.takima.backskeleton.models.TierList build() {
-            return new com.takima.backskeleton.models.TierList(this);
+        public TierList build() {
+            return new TierList(this);
         }
 
 

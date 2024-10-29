@@ -11,6 +11,8 @@ import { MajorStudentsResolver } from "majors/major-students/major-students.reso
 import { MajorStudentsComponent } from "majors/major-students/major-students.component"
 import { TierListsResolver } from "tierLists/tierLists.resolver"
 import { TierListsComponent } from "tierLists/tierLists.component"
+import {UsersComponent} from "./users/users.component";
+import {UsersResolver} from "./users/users.resolver";
 
 
 const routes: Routes = [
@@ -48,6 +50,13 @@ const routes: Routes = [
     component: TierListsComponent,
     resolve: {
       tierLists: TierListsResolver,
+    },
+  },
+  {
+    path: "users",
+    component: UsersComponent,
+    resolve: {
+      users: UsersResolver,
     },
   },
 ]

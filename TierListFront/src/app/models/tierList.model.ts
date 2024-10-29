@@ -8,6 +8,6 @@ export interface TierList {
   votePour?: number;
   voteContre?: number;
   creationDate?: Date;
-  tiers?: Tier[]; // Assume that 'Tier' is another model that represents individual tiers in the TierList
-  owner: User;    // 'User' represents the owner of the TierList
+  tiers?: Tier[];
+  owner: User;
 }

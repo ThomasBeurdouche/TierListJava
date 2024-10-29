@@ -28,23 +28,23 @@ public class TierListController {
         return tierListService.findAll();
     }
 
-    @GetMapping("/{id}")
-    public TierList getTierListById(@PathVariable Long id) {
-        return tierListService.getTierListById(id);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteTierList(@PathVariable Long id) {
-        tierListService.deleteById(id);
-    }
-
-    @PostMapping("")
-    public void addTierList(@RequestBody StudentDto studentDto) {
-        tierListService.addTierList(studentDto);
-    }
-
-    @PostMapping("/{id}")
-    public void updateTierList(@RequestBody TierListDto tierListDto, @PathVariable Long id) {
-        tierListService.updateTierList(tierListDto, id);
-    }
+//    @GetMapping("/{id}")
+//    public TierList getTierListById(@PathVariable Long id) {
+//        return tierListService.getTierListById(id);
+//    }
+//
+//    @DeleteMapping("/{id}")
+//    public void deleteTierList(@PathVariable Long id) {
+//        tierListService.deleteById(id);
+//    }
+//
+//    @PostMapping("")
+//    public void addTierList(@RequestBody StudentDto studentDto) {
+//        tierListService.addTierList(studentDto);
+//    }
+//
+//    @PostMapping("/{id}")
+//    public void updateTierList(@RequestBody TierListDto tierListDto, @PathVariable Long id) {
+//        tierListService.updateTierList(tierListDto, id);
+//    }
 }

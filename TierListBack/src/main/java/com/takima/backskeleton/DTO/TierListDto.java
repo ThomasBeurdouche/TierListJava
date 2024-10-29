@@ -1,5 +1,7 @@
 package com.takima.backskeleton.DTO;
 
+import com.takima.backskeleton.models.Course;
+import com.takima.backskeleton.models.Major;
 import com.takima.backskeleton.models.Tier;
 import com.takima.backskeleton.models.User;
 
@@ -7,25 +9,27 @@ import java.time.Instant;
 import java.util.List;
 
 public class TierListDto {
-        private int votePour;
-        private int voteContre;
-        private Instant creationDate;
-        private List<Tier> tiers;
-        private User owner;
-        private int id;
-        private String tierListTitle;
-        private boolean publicTierList;
+    private int votePour;
+    private int voteContre;
+    private Instant creationDate;
+    private List<Tier> tiers;
+    private User owner;
+    private String tierListTitle;
+    private boolean publicTierList;
 
         public static TierListDto builder() {
+            return new TierListDto();
+        }
+
+        public static TierListDto builder(Integer votePour, Integer voteContre, Instant creationDate, List<Tier> tiers, User owner,String tierListTitle, Boolean publicTierList) {
             TierListDto tierListDto = new TierListDto();
-            tierListDto.votePour = 0;
-            tierListDto.voteContre = 0;
-            tierListDto.creationDate = Instant.now();
-            tierListDto.tiers = null;
-            tierListDto.owner = null;
-            tierListDto.id = 0;
-            tierListDto.tierListTitle = "";
-            tierListDto.publicTierList = false;
+            tierListDto.votePour = votePour;
+            tierListDto.voteContre = voteContre;
+            tierListDto.creationDate = creationDate;
+            tierListDto.tiers = tiers;
+            tierListDto.owner = owner;
+            tierListDto.tierListTitle = tierListTitle;
+            tierListDto.publicTierList = publicTierList;
             return tierListDto;
 
         }
@@ -49,10 +53,7 @@ public class TierListDto {
             this.owner = owner;
             return this;
         }
-        public TierListDto id(int id) {
-            this.id = id;
-            return this;
-        }
+
         public TierListDto tierListTitle(String tierListTitle) {
             this.tierListTitle = tierListTitle;
             return this;
@@ -80,9 +81,6 @@ public class TierListDto {
         }
         public User getOwner() {
             return owner;
-        }
-        public int getId() {
-            return id;
         }
         public String getTierListTitle() {
             return tierListTitle;

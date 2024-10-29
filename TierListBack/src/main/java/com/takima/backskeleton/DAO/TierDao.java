@@ -12,7 +12,7 @@ import java.util.List;
 
 @Repository
 public interface TierDao extends JpaRepository<Tier, Long> {
-    @Query("SELECT i FROM Item i WHERE i.tier.id= :tierId")
-    List<Item> findByTierId(int tierId);
+    //@Query("SELECT i FROM Item i WHERE i.tier.id= :tierId")
+    //List<Item> findByTierId(int tierId);
 }
 

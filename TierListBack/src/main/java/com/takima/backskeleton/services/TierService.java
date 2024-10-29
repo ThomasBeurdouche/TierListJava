@@ -13,13 +13,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+@Service
 public class TierService {
     private final TierDao tierDao;
-    private final TierListDao tierListDao;
 
-    public TierService(TierDao tierDao, TierListDao tierListDao) {
+    public TierService(TierDao tierDao) {
         this.tierDao = tierDao;
-        this.tierListDao = tierListDao;
     }
 
     public List<Tier> findAll() {
@@ -39,7 +38,7 @@ public class TierService {
     }
 
     @Transactional
-    public void addStudent(TierDto tierDto) {
+    public void addTier(TierDto tierDto) {
         Tier tier;
         tier = TierMapper.fromDto(tierDto, null);
         tierDao.save(tier);
@@ -48,7 +47,7 @@ public class TierService {
     @Transactional
     public void updateTier(TierDto tierDto, Long id) {
         tierDao.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("Student doesn't exist"));
+                .orElseThrow(() -> new NoSuchElementException("Tier doesn't exist"));
         Tier tier = TierMapper.fromDto(tierDto, id);
         tierDao.save(tier);
     }
