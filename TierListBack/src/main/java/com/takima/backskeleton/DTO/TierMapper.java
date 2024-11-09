@@ -6,7 +6,7 @@ public class TierMapper {
     public static Tier fromDto(TierDto tierDto, Long id) {
         return new Tier(
                 id,
-                tierDto.getName(),
+                tierDto.getTierTitle(),
                 tierDto.getTierList()
         );
     }

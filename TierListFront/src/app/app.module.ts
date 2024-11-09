@@ -17,6 +17,7 @@ import { MajorStudentsComponent } from "majors/major-students/major-students.com
 import { HttpClientModule } from "@angular/common/http"
 import {TierListsComponent} from "tierLists/tierLists.component";
 import {UsersComponent} from "./users/users.component";
+import {TierListDetailsComponent} from "./tierLists/tierList-details/tierList-details.component";
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import {UsersComponent} from "./users/users.component";
     MajorStudentsComponent,
     TierListsComponent,
     UsersComponent,
+    TierListDetailsComponent
   ],
   imports: [
     BrowserModule,

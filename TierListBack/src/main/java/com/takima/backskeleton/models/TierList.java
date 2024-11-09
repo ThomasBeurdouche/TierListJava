@@ -29,7 +29,7 @@ public class TierList {
     @JsonManagedReference  // Utilisé pour la partie "parent"
     private List<Tier> tiers;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     @JoinColumn(name = "owner_id")
     private User owner;
 

@@ -13,6 +13,8 @@ import { TierListsResolver } from "tierLists/tierLists.resolver"
 import { TierListsComponent } from "tierLists/tierLists.component"
 import {UsersComponent} from "./users/users.component";
 import {UsersResolver} from "./users/users.resolver";
+import {TierListDetailsResolver} from "./tierLists/tierList-details/tierList-details.resolver";
+import {TierListDetailsComponent} from "./tierLists/tierList-details/tierList-details.component";
 
 
 const routes: Routes = [
@@ -57,6 +59,13 @@ const routes: Routes = [
     component: UsersComponent,
     resolve: {
       users: UsersResolver,
+    },
+  },
+  {
+    path: "tierList-details/:id",
+    component: TierListDetailsComponent,
+    resolve: {
+      tierList: TierListDetailsResolver,
     },
   },
 ]

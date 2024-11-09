@@ -5,15 +5,15 @@ import com.takima.backskeleton.models.TierList;
 
 public class TierDto {
     private Long id;
-    private String name;
+    private String tierTitle;
     private TierList tierList;
 
     public TierDto() {
     }
 
-    public TierDto(Long id, String name, TierList tierList) {
+    public TierDto(Long id, String tierTitle, TierList tierList) {
         this.id = id;
-        this.name = name;
+        this.tierTitle = tierTitle;
         this.tierList = tierList;
     }
 
@@ -21,8 +21,8 @@ public class TierDto {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getTierTitle() {
+        return tierTitle;
     }
 
     public TierList getTierList() {

@@ -14,13 +14,13 @@
   </tr>
   </thead>
   <tbody>
-      <td>"ok"</td>
   <tr *ngFor="let user of (users$ | async)">
-      <td>{{ user?.username }}</td>
-      <td>{{ user?.mail }}</td>
-      <td>{{ user?.mdp }}</td>
-      <td>{{ user?.tierLists }}</td>
-      <td>ok</td>
-    </tr>
+      <td>{{ user.username }}</td>
+      <td>{{ user.mail }}</td>
+      <td>{{ user.mdp }}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+  </tr>
   </tbody>
 </table>

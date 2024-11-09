@@ -11,8 +11,8 @@ create table tierLists
     id SERIAL PRIMARY KEY,
     tierListTitle TEXT not null,
     publicTierList BOOLEAN null,
-    votePour INT null,
-    voteContre INT null,
+    votePour INT,
+    voteContre INT,
     creationDate date not null,
     owner_id INT not null,
     CONSTRAINT fk_user
@@ -36,7 +36,7 @@ create table items
 (
     id SERIAL PRIMARY KEY,
     itemTitle TEXT not null,
-    itemURL TEXT not null,
+    itemURL TEXT,
     tier_id INT NOT NULL,
     CONSTRAINT fk_tier
         FOREIGN KEY (tier_id)

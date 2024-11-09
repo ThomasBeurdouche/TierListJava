@@ -20,7 +20,7 @@ public class User {
     @Column(name = "mdp")
     private String mdp;
 
-    @OneToMany(mappedBy = "owner")
+    @OneToMany(mappedBy = "owner",cascade = {CascadeType.REMOVE, CascadeType.MERGE})
     @JsonIgnore
     private List<TierList> tierLists;
 

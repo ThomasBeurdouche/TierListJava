@@ -15,7 +15,7 @@ export class TierListService {
         return this.http.get<TierList[]>(this.tierListsUrl);
     }
 
-    findById(id: bigint): Observable<TierList> {
+    findById(id: number): Observable<TierList> {
         return this.http.get<TierList>(`${this.tierListsUrl}/${id}`);
     }
 
@@ -23,11 +23,11 @@ export class TierListService {
         return this.http.post<TierList>(this.tierListsUrl, tierList);
     }
 
-    update(id: bigint, tierList: TierList): Observable<TierList> {
+    update(id: number, tierList: TierList): Observable<TierList> {
         return this.http.put<TierList>(`${this.tierListsUrl}/${id}`, tierList);
     }
 
-    delete(id: bigint): Observable<void> {
-        return this.http.delete<void>(`${this.tierListsUrl}/${id}`);
+    delete(tierList: TierList): Observable<void> {
+        return this.http.delete<void>(`${this.tierListsUrl}/${tierList.id}`);
     }
 }

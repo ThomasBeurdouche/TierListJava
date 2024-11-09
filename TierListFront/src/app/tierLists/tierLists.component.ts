@@ -17,7 +17,7 @@ export class TierListsComponent {
 
   deleteTierList(event: any, tierList: TierList) {
     event.stopPropagation()
-    this.tierListService.delete(<bigint>tierList.id).subscribe(() => this.router.navigate(["tierLists"]))
+    this.tierListService.delete(tierList).subscribe(() => this.router.navigate(["tierLists"]))
   }
 
   /*searchByMajorAndCourse($event: Observable<TierList[]>) {

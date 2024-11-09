@@ -16,7 +16,7 @@
   <tbody>
   <tr *ngFor="let tierList of (tierLists$ | async)" routerLink="/tierList-details/{{tierList.id}}">
     <td>{{ tierList.tierListTitle }}</td>
-    <td>{{ tierList.owner?.username }}</td>
+    <td>{{ tierList.owner.username }}</td>
     <td>{{ tierList.votePour }} / {{ tierList.voteContre }}</td>
     <td>{{ tierList.creationDate | date: 'dd/MM/yyyy' }}</td>
     <td>{{ tierList.publicTierList ? 'Oui' : 'Non' }}</td>

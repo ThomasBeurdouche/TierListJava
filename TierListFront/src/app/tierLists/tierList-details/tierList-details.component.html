@@ -1,0 +1,31 @@
+<ng-container *ngIf="tierList$ | async; let tierList">
+  <div class="tierlist-container">
+    <h1>{{tierList.tierListTitle}}</h1>
+
+    <!-- Boucle sur les tiers -->
+    <div *ngFor="let tier of tierList.tiers; let i = index" class="tier">
+      <div class="tier-header">
+        <span>{{ tier.tierTitle || 'Tier (renommer)' }}</span>
+
+        <!-- Bouton pour supprimer le tier -->
+        <button class="button delete-button" (click)="removeTier(i)">X</button>
+      </div>
+
+      <!-- Boucle sur les items dans chaque tier -->
+      <div *ngFor="let item of tier.items; let j = index" class="item">
+        <span>{{ item.itemTitle || 'Item' }}</span>
+
+        <!-- Bouton pour supprimer l'item -->
+        <button class="button delete-button" (click)="removeItem(i, j)">X</button>
+      </div>
+
+      <!-- Bouton pour ajouter un item dans le tier -->
+      <button class="button add-item-button" (click)="addItem(i)">+</button>
+    </div>
+
+    <!-- Bouton pour ajouter un nouveau tier -->
+    <button class="add-tier-button" (click)="addTier()">Ajouter un Tier</button>
+  </div>
+</ng-container>
+
+

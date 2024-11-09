@@ -1,21 +1,39 @@
 package com.takima.backskeleton.DTO;
 
 import com.takima.backskeleton.models.Item;
+import com.takima.backskeleton.models.Tier;
 
 public class ItemDto {
     private Long id;
     private String url;
-    // Vous pouvez également inclure d'autres propriétés si nécessaire
-    // par exemple, les propriétés liées à Tier, si besoin.
+    private String itemTitle;
+    private Tier tier;
 
-    // Constructeur par défaut
     public ItemDto() {
     }
 
     // Constructeur avec paramètres
-    public ItemDto(Long id, String url) {
+    public ItemDto(Long id,String itemTitle,String url, Tier tier) {
         this.id = id;
         this.url = url;
+        this.itemTitle = itemTitle;
+        this.tier = tier;
+    }
+
+    public Tier getTier() {
+        return tier;
+    }
+
+    public void setTier(Tier tier) {
+        this.tier = tier;
+    }
+
+    public String getItemTitle() {
+        return itemTitle;
+    }
+
+    public void setItemTitle(String itemTitle) {
+        this.itemTitle = itemTitle;
     }
 
     // Getters et Setters
@@ -40,7 +58,7 @@ public class ItemDto {
         if (item == null) {
             return null;
         }
-        return new ItemDto(item.getId(), item.getUrl());
+        return new ItemDto(item.getId(), item.getItemTitle() ,item.getUrl(), item.getTier());
     }
 
     // Méthode pour convertir un ItemDto en Item
@@ -51,7 +69,8 @@ public class ItemDto {
         Item item = new Item();
         item.setId(itemDTO.getId());
         item.setUrl(itemDTO.getUrl());
-        // Si vous avez besoin d'une tier, il faudra l'ajouter ici
+        item.setItemTitle(itemDTO.getItemTitle());
+        item.setTier(itemDTO.getTier());
         return item;
     }
 }

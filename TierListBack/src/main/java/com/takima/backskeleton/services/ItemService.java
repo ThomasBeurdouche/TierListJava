@@ -1,11 +1,15 @@
 package com.takima.backskeleton.services;
 
 import com.takima.backskeleton.DAO.ItemDao;
+import com.takima.backskeleton.DTO.ItemDto;
+import com.takima.backskeleton.DTO.ItemMapper;
 import com.takima.backskeleton.models.Item;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class ItemService {
@@ -22,14 +26,14 @@ public class ItemService {
         return users ;
     }
 
-//    public Item getById(Long id) {
-//        return itemDao.findById(id).orElseThrow();
-//    }
-//
-//    @Transactional
-//    public void deleteById(Long id) {
-//        itemDao.deleteById(id);
-//    }
+    public Item getById(Long id) {
+        return itemDao.findById(id).orElseThrow();
+    }
+
+    @Transactional
+    public void deleteById(Long id) {
+        itemDao.deleteById(id);
+    }
 //
 //    @Transactional
 //    public void addItem(ItemDto itemDto) {
@@ -38,11 +42,11 @@ public class ItemService {
 //        itemDao.save(item);
 //    }
 //
-//    @Transactional
-//    public void updateItem(ItemDto itemDto, Long id) {
-//        itemDao.findById(id)
-//                .orElseThrow(() -> new NoSuchElementException("Item doesn't exist"));
-//        Item item = ItemMapper.fromDto(itemDto, id);
-//        itemDao.save(item);
-//    }
+    @Transactional
+    public void updateItem(ItemDto itemDto, Long id) {
+        itemDao.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Item doesn't exist"));
+        Item item = ItemMapper.fromDto(itemDto, id);
+        itemDao.save(item);
+    }
 }

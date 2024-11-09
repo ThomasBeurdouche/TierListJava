@@ -37,6 +37,18 @@ public class Tier {
         this.tierList = tierList;
     }
 
+    public void setTierTitle(String tierTitle) {
+        this.tierTitle = tierTitle;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+
+    public void setTierList(TierList tierList) {
+        this.tierList = tierList;
+    }
+
     public String getTierTitle() {
         return tierTitle;
     }
