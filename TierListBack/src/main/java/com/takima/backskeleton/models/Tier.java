@@ -15,7 +15,7 @@ public class Tier {
     private String tierTitle;
     //Todo : private String description
 
-    @OneToMany(mappedBy = "tier", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "tier", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference  // Utilisé pour la partie "parent"
     private List<Item> items;
 

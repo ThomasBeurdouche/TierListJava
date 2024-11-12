@@ -38,10 +38,10 @@ public class TierListController {
         tierListService.deleteById(id);
     }
 
-//    @PostMapping("")
-//    public void addTierList(@RequestBody StudentDto studentDto) {
-//        tierListService.addTierList(studentDto);
-//    }
+    @PostMapping("")
+    public void addTierList(@RequestBody TierListDto tierListDto) {
+        tierListService.addTierList(tierListDto);
+ }
 
     @PutMapping("/{id}")
     public void updateTierList(@RequestBody TierListDto tierListDto, @PathVariable Long id) {

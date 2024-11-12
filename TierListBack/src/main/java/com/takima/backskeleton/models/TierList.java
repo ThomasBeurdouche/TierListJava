@@ -25,7 +25,7 @@ public class TierList {
     @Column(name = "creationdate")
     private Instant creationDate;
 
-    @OneToMany(mappedBy = "tierList", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "tierList", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference  // Utilisé pour la partie "parent"
     private List<Tier> tiers;
 

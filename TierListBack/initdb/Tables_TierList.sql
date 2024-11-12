@@ -11,10 +11,10 @@ create table tierLists
     id SERIAL PRIMARY KEY,
     tierListTitle TEXT not null,
     publicTierList BOOLEAN null,
-    votePour INT,
-    voteContre INT,
+    votePour INT not null ,
+    voteContre INT not null ,
     creationDate date not null,
-    owner_id INT not null,
+    owner_id INT,
     CONSTRAINT fk_user
         FOREIGN KEY (owner_id)
         REFERENCES users(id)

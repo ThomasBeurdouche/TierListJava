@@ -5,6 +5,7 @@ import { TierList } from "models/tierList.model";
 import { Tier } from "models/tier.model";
 import { TierListService } from "services/tierList.service";
 import { User } from "models/user.model";
+import {TierService} from "../../services/tier.service";
 
 @Component({
   selector: "epf-tierList-details",
@@ -20,6 +21,7 @@ export class TierListDetailsComponent implements OnInit, OnDestroy {
   constructor(
     private _route: ActivatedRoute,
     private tierListService: TierListService,
+    private tierService: TierService,
     private router: Router
   ) {}
 
@@ -27,7 +29,10 @@ export class TierListDetailsComponent implements OnInit, OnDestroy {
     this.tierList$.subscribe((tierList) => {
       this.tierList = tierList;
     });
+    window.addEventListener('beforeunload', this.onBeforeUnload);
   }
+
+  onBeforeUnload = (event: BeforeUnloadEvent): void => {this.save();};
 
   // Ajouter un nouveau tier
   addTier(): void {
@@ -52,8 +57,7 @@ export class TierListDetailsComponent implements OnInit, OnDestroy {
   addItem(tierIndex: number): void {
     if (this.tierList?.tiers) {
       const newItem = { itemTitle: this.newItemName || "New Item" };
-      // @ts-ignore
-      this.tierList.tiers[tierIndex].items.push(newItem);
+      this.tierList.tiers[tierIndex].items!.push(newItem);
       this.newItemName = ""; // Réinitialise le champ de nom de nouveau item
     }
   }
@@ -61,8 +65,7 @@ export class TierListDetailsComponent implements OnInit, OnDestroy {
   // Supprimer un item dans un tier spécifique
   removeItem(tierIndex: number, itemIndex: number): void {
     if (this.tierList?.tiers && this.tierList.tiers[tierIndex].items) {
-      // @ts-ignore
-      this.tierList.tiers[tierIndex].items.splice(itemIndex, 1);
+      this.tierList.tiers[tierIndex].items!.splice(itemIndex, 1);
     }
   }
 
@@ -84,6 +87,7 @@ export class TierListDetailsComponent implements OnInit, OnDestroy {
     }
   }
   ngOnDestroy() {
+    window.removeEventListener('beforeunload', this.onBeforeUnload);
     this.save(); // Sauvegarde automatique
   }
 }

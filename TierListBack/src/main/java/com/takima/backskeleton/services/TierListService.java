@@ -41,17 +41,17 @@ public class TierListService {
         tierListDao.deleteById(id);
     }
 
-//    @Transactional
-//    public void addTierList(TierListDto tierListDto) {
-//        TierList tierList;
-//        try {
-//            tierList = TierListMapper.fromDto(tierListDto, null); //TODO : change to TierListMapper
-//        } catch (IOException e) {
-//            throw new RuntimeException("Error with tierlist image", e);
-//        }
-//
-//        tierListDao.save(tierList);
-//    }
+    @Transactional
+    public void addTierList(TierListDto tierListDto) {
+        TierList tierList;
+        try {
+            tierList = TierListMapper.fromDto(tierListDto, null);
+        } catch (IOException e) {
+            throw new RuntimeException("Error with tierlist image", e);
+        }
+
+        tierListDao.save(tierList);
+    }
 
     @Transactional
     public void updateTierList(TierListDto tierListDto, Long id) {
@@ -68,6 +68,10 @@ public class TierListService {
         }
         tierListDao.save(tierList);
     }
+
+//    public void addTierList(TierList tierList) {
+//        tierListDao.save(tierList);
+//    }
 
 
 //    public void addTierList(StudentDto studentDto) {

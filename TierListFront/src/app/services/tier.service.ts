@@ -7,7 +7,7 @@ import { Tier } from 'models/tier.model';
   providedIn: 'root',
 })
 export class TierService {
-  private tiersUrl = 'http://localhost:8080/tiers';
+  private tiersUrl = 'http://localhost:8080/Tiers';
 
   constructor(private http: HttpClient) {}
 
