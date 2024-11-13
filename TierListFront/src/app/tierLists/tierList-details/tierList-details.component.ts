@@ -6,6 +6,7 @@ import { Tier } from "models/tier.model";
 import { TierListService } from "services/tierList.service";
 import { User } from "models/user.model";
 import {TierService} from "../../services/tier.service";
+import {Item} from "../../models/item.model";
 
 @Component({
   selector: "epf-tierList-details",
@@ -90,4 +91,5 @@ export class TierListDetailsComponent implements OnInit, OnDestroy {
     window.removeEventListener('beforeunload', this.onBeforeUnload);
     this.save(); // Sauvegarde automatique
   }
+
 }

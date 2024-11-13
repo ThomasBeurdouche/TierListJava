@@ -26,6 +26,7 @@ public class TierList {
     private Instant creationDate;
 
     @OneToMany(mappedBy = "tierList", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OrderBy("id")
     @JsonManagedReference  // Utilisé pour la partie "parent"
     private List<Tier> tiers;
 

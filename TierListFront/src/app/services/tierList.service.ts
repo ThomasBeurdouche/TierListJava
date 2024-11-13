@@ -24,7 +24,7 @@ export class TierListService {
     }
 
     update(id: number, tierList: TierList): Observable<TierList> {
-        return this.http.put<TierList>(`${this.tierListsUrl}/${id}`, tierList);
+        return this.http.patch<TierList>(`${this.tierListsUrl}/${id}`, tierList);
     }
 
     delete(tierList: TierList): Observable<void> {

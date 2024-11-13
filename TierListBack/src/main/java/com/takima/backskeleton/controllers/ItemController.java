@@ -1,5 +1,6 @@
 package com.takima.backskeleton.controllers;
 
+import com.takima.backskeleton.DTO.ItemDto;
 import com.takima.backskeleton.models.Item;
 import com.takima.backskeleton.services.ItemService;
 import org.springframework.web.bind.annotation.*;
@@ -38,8 +39,8 @@ public class ItemController {
 //        itemService.addItem(studentDto);
 //    }
 //
-//    @PostMapping("/{id}")
-//    public void updateItem(@RequestBody ItemDto itemDto, @PathVariable Long id) {
-//        itemService.updateItem(itemDto, id);
-//    }
+    @PatchMapping("/{id}")
+    public void updateItem(@RequestBody ItemDto itemDto, @PathVariable Long id) {
+        itemService.updateItem(itemDto, id);
+    }
 }

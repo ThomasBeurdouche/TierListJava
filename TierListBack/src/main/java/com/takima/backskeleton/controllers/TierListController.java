@@ -43,7 +43,7 @@ public class TierListController {
         tierListService.addTierList(tierListDto);
  }
 
-    @PutMapping("/{id}")
+    @PatchMapping("/{id}")
     public void updateTierList(@RequestBody TierListDto tierListDto, @PathVariable Long id) {
         tierListService.updateTierList(tierListDto, id);
     }

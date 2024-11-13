@@ -24,7 +24,7 @@ export class TierService {
   }
 
   update(id: bigint, tier: Tier): Observable<Tier> {
-    return this.http.put<Tier>(`${this.tiersUrl}/${id}`, tier);
+    return this.http.patch<Tier>(`${this.tiersUrl}/${id}`, tier);
   }
 
   delete(id: bigint): Observable<void> {

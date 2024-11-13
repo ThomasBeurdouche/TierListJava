@@ -39,7 +39,7 @@ public class TierController {
 //        tierService.addTier(studentDto);
 //    }
 //
-    @PostMapping("/{id}")
+    @PatchMapping("/{id}")
     public void updateTier(@RequestBody TierDto tierDto, @PathVariable Long id) {
         tierService.updateTier(tierDto, id);
     }

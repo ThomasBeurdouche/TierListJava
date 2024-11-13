@@ -24,7 +24,7 @@ export class ItemService {
   }
 
   update(id: bigint, item: Item): Observable<Item> {
-    return this.http.put<Item>(`${this.itemsUrl}/${id}`, item);
+    return this.http.patch<Item>(`${this.itemsUrl}/${id}`, item);
   }
 
   delete(id: bigint): Observable<void> {
