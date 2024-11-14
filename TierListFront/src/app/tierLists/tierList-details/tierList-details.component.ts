@@ -78,9 +78,11 @@ export class TierListDetailsComponent implements OnInit{
     if (this.tierList) {
       if (this.tierList.owner.username === "" ||this.tierList.owner.username === "Default User") {
         const username = prompt("Please enter the owner's username:");
+        const TierListTitle = prompt("Please enter the title of the TierList:");
         if (username) {
           this.user.username = username;
           this.tierList.owner = this.user;
+          this.tierList.tierListTitle = TierListTitle || "New TierList";
         }
       }
       const id = this._route.snapshot.params["id"];
