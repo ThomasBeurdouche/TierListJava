@@ -2,8 +2,8 @@ create table "users"
 (
     id SERIAL PRIMARY KEY,
     username TEXT not null,
-    mail TEXT not null,
-    mdp TEXT not null
+    mail TEXT,
+    mdp TEXT
 );
 
 create table tierLists
@@ -11,8 +11,8 @@ create table tierLists
     id SERIAL PRIMARY KEY,
     tierListTitle TEXT not null,
     publicTierList BOOLEAN null,
-    votePour INT not null ,
-    voteContre INT not null ,
+    votePour INT,
+    voteContre INT,
     creationDate date not null,
     owner_id INT,
     CONSTRAINT fk_user

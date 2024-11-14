@@ -1,10 +1,12 @@
 package com.takima.backskeleton.services;
 
 import com.takima.backskeleton.DAO.TierListDao;
+import com.takima.backskeleton.DAO.UserDao;
 import com.takima.backskeleton.DTO.TierListDto;
 import com.takima.backskeleton.DTO.TierListMapper;
 import com.takima.backskeleton.models.Tier;
 import com.takima.backskeleton.models.TierList;
+import com.takima.backskeleton.models.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Service;
@@ -12,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -20,17 +21,20 @@ import java.util.NoSuchElementException;
 public class TierListService {
 
     private final TierListDao tierListDao;
+    private final UserDao userDao;
     @PersistenceContext
     private EntityManager entityManager;
 
-    public TierListService(TierListDao tierListDao) {
+    public TierListService(TierListDao tierListDao, UserDao userDao) {
         this.tierListDao = tierListDao;
+        this.userDao = userDao;
     }
+
     public List<TierList> findAll() {
         Iterable<TierList> it = tierListDao.findAll();
-        List <TierList> users = new ArrayList<>();
+        List<TierList> users = new ArrayList<>();
         it.forEach(users::add);
-        return users ;
+        return users;
     }
 
     public TierList getById(Long id) {
@@ -43,18 +47,6 @@ public class TierListService {
     }
 
     @Transactional
-    public void addTierList(TierListDto tierListDto) {
-        TierList tierList;
-        try {
-            tierList = TierListMapper.fromDto(tierListDto, null);
-        } catch (IOException e) {
-            throw new RuntimeException("Error with tierlist image", e);
-        }
-
-        tierListDao.save(tierList);
-    }
-
-    @Transactional
     public void updateTierList(TierListDto tierListDto, Long id) {
         tierListDao.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("TierList doesn't exist"));
@@ -62,7 +54,7 @@ public class TierListService {
         try {
             tierList = TierListMapper.fromDto(tierListDto, id);
             for (Tier tier : tierList.getTiers()) {
-                tier.setTierList(tierList);  // Réassignez la tierList à chaque tier
+                tier.setTierList(tierList);
             }
         } catch (IOException e) {
             throw new RuntimeException("Error with TierList image", e);
@@ -70,17 +62,21 @@ public class TierListService {
         tierListDao.save(tierList);
     }
 
-//    public void addTierList(TierList tierList) {
-//        tierListDao.save(tierList);
-//    }
-
-
-//    public void addTierList(StudentDto studentDto) {
-//        // TODO  : addTierList
-//    }
-//
-//    public TierList getTierListById(Long id) {
-//        return null;//TODO : getTierListById
-//    }
+    @Transactional
+    public void addTierList(TierListDto tierListDto) {
+        TierList tierList;
+        try {
+            tierList = TierListMapper.fromDto(tierListDto, null);
+            User owner = tierList.getOwner();
+            if (owner != null && owner.getId() == null) {
+                userDao.save(owner);
+            }
+            for (Tier tier : tierList.getTiers()) {
+                tier.setTierList(tierList);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException("Error with tierlist image", e);
+        }
+        tierListDao.save(tierList);
+    }
 }
-

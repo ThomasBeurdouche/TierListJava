@@ -1,24 +1,21 @@
 package com.takima.backskeleton.controllers;
 
-import com.takima.backskeleton.DTO.StudentDto;
 import com.takima.backskeleton.DTO.TierListDto;
-import com.takima.backskeleton.models.Student;
 import com.takima.backskeleton.models.TierList;
-import com.takima.backskeleton.services.StudentService;
 import com.takima.backskeleton.services.TierListService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import org.springframework.web.multipart.MultipartFile;
 
 @CrossOrigin
-@RequestMapping("TierLists")//on laisse en majuscule
+@RequestMapping("TierLists")
 @RestController
 public class TierListController {
 
     private final TierListService tierListService;
 
-
+    @Autowired
     public TierListController(TierListService tierListService) {
         this.tierListService = tierListService;
     }
@@ -41,7 +38,7 @@ public class TierListController {
     @PostMapping("")
     public void addTierList(@RequestBody TierListDto tierListDto) {
         tierListService.addTierList(tierListDto);
- }
+    }
 
     @PatchMapping("/{id}")
     public void updateTierList(@RequestBody TierListDto tierListDto, @PathVariable Long id) {
