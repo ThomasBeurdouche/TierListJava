@@ -1,14 +1,11 @@
 package com.takima.backskeleton.services;
 
 import com.takima.backskeleton.DAO.TierDao;
-import com.takima.backskeleton.DAO.TierListDao;
 import com.takima.backskeleton.DTO.*;
-import com.takima.backskeleton.models.Student;
 import com.takima.backskeleton.models.Tier;
-import com.takima.backskeleton.models.TierList;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;

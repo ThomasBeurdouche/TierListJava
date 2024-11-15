@@ -1,7 +1,5 @@
 package com.takima.backskeleton.DTO;
 
-import com.takima.backskeleton.models.Course;
-import com.takima.backskeleton.models.Major;
 import com.takima.backskeleton.models.Tier;
 import com.takima.backskeleton.models.User;
 

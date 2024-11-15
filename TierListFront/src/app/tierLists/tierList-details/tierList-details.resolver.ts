@@ -3,7 +3,6 @@ import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from "@angular/r
 import {Observable, of} from "rxjs"
 import { TierListService } from "services/tierList.service"
 import { TierList } from "models/tierList.model"
-import { Major } from "models/major.model"
 import {User} from "../../models/user.model";
 
 @Injectable({
