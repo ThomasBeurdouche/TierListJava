@@ -1,0 +1,18 @@
+to RUN this project :
+1. Clone the project
+2. Open the project in your IDE
+3. rename the .env.sample file to .env
+4. Navigate to the TierListBack folder
+5. Run the command docker compose up --build (make sure there is no open containers on the ports 5432,8080 and 4200)
+6. Wait for the project to build
+7. Go to localhost 4200 to view the project
+
+
+Things you can do with this project:
+Create a new tierlist by clicking on the new button inside of the tierlist page
+Using create tierlist, you can create tiers, and add items to the tiers using the little + button
+
+Edit a tierlist by clicking on the tierlist element inside of the tierlist page
+Using the edit tierlist, you can ediit the name of the tiers and the content of each tiers elements.
+
+Delete a tierlist by clicking on the delete button inside of the tierlist page ( and then refreshing the page)
